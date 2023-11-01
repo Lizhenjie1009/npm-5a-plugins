@@ -35,9 +35,9 @@
 
   2. 5a-认证地址
 
-      VUE_APP_AUTHENTICATION = '/client/authentication'
+      VUE_AUTHORIZE_HREF = '/client/authentication'
     注：vite配置环境变量
-      VITE_APP_AUTHENTICATION = '/client/authentication'
+      VITE_AUTHORIZE_HREF = '/client/authentication'
 
 
 

@@ -30,7 +30,7 @@ export default {
       if (data.code !== 200) {
         this.messageComponent.message({ type: 'error',content: data.msg })
         setTimeout(() => {
-          window.location.href = process.env.VUE_APP_AUTHENTICATION
+          window.location.href = process.env.VUE_AUTHORIZE_HREF
         }, 3000)
       } else {
         this.auth = data.data

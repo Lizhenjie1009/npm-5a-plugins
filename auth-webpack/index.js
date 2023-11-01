@@ -5,7 +5,7 @@ function watchToken(response) {
   const { code } = response.data
   if (code === 'AU0000') {
     sessionStorage.clear()
-    window.location.href = process.env.VUE_APP_AUTHENTICATION
+    window.location.href = process.env.VUE_AUTHORIZE_HREF
     return response
   }
   // if (code === 'AU0003') {

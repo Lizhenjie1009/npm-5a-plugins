@@ -5,7 +5,7 @@ function watchToken(response) {
   const { code } = response.data
   if (code === 'AU0000') {
     sessionStorage.clear()
-    window.location.href = window.location.origin + import.meta.env.VITE_APP_AUTHENTICATION
+    window.location.href = import.meta.env.VITE_AUTHORIZE_HREF
     return response
   }
   // if (code === 'AU0003') {

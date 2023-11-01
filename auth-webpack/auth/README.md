@@ -16,7 +16,9 @@
   import { watchToken, addToken } from 'auth-vite'
 
   请求拦截  addToken(config)
-  响应拦截  watchToken(response)
+  响应拦截  watchToken(response, envUrl, errorCode)
+    envUrl: 跳转env地址
+    errorCode：后台响应的异常状态码
 
 ## 3.配置代理
   proxy配置 `/client` 指向后端地址
@@ -27,17 +29,12 @@
 
 
 ## 4.配置环境变量
-  1. 5a-认证code回调地址
 
-      VUE_APP_AUTH_CODE_CALLBACK = '/client/callback'
+   5a-认证地址
+
+      VUE_AUTHORIZE_HREF = '/client/authentication'
     注：vite配置环境变量
-      VITE_APP_AUTH_CODE_CALLBACK = '/client/callback'
-
-  2. 5a-认证地址
-
-      VUE_APP_AUTHENTICATION = '/client/authentication'
-    注：vite配置环境变量
-      VITE_APP_AUTHENTICATION = '/client/authentication'
+      VITE_AUTHORIZE_HREF = '/client/authentication'
 
 
 

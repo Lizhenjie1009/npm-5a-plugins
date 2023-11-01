@@ -35,12 +35,12 @@
 
   2. 5a-认证地址
 
-      VUE_APP_AUTHENTICATION = '/client/authentication'
+      VUE_AUTHORIZE_HREF = '/client/authentication'
     注：vite配置环境变量
-      VITE_APP_AUTHENTICATION = '/client/authentication'
+      VITE_AUTHORIZE_HREF = '/client/authentication'
 
 
 ## 5.配置路由守卫
   · 给 `/auth` 添加白名单，放过auth
-  · 没有token，location.href=VUE_APP_AUTHENTICATION
+  · 没有token，location.href=VITE_AUTHORIZE_HREF
 

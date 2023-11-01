@@ -1,41 +1,28 @@
 <template>
-  <div>
-    auth {{ auth ? 'success' : 'fail' }}
-  </div>
+  <div></div>
 </template>
 
 <script>
 import Axios from 'axios'
 
 export default {
-  data() {
-    return {
-      auth: ''
-    }
-  },
   created() {
     this.init()
   },
   methods: {
     async init() {
-      // let urlV2orV3 = ''
-      // try {
-      //   // v2
-      //   urlV2orV3 = process.env.VUE_APP_AUTH_CODE_CALLBACK
-      // } catch (error) {
-      //   // v3
-      //   urlV2orV3 = import.meta.env.VITE_APP_AUTH_CODE_CALLBACK
-      // }
-      const { data } = await Axios.get(
-        import.meta.env.VITE_APP_AUTH_CODE_CALLBACK + '?' + location.href.split('?')[1]
-      )
+      const search = location.href.split('?')[1]
+      const { data } = await Axios.get('/client/callback?' + search)
       const res = data.data
-      this.auth = data.data
-      if (res?.token) {
+      if (res) {
         sessionStorage.setItem('info', JSON.stringify(res))
-        sessionStorage.setItem('token', res?.token)
-        sessionStorage.setItem('menus', JSON.stringify(res.resources))
-        this.$router.replace('/')
+        res?.token && sessionStorage.setItem('token', res?.token)
+        res.resources && sessionStorage.setItem('menus', JSON.stringify(res.resources))
+        let url = ''
+        search.replace(/(\/.*)/g, ($1, s1) => (url = s1))
+        this.$nextTick(() => {
+          url ? this.$router.replace(url) : this.$router.replace('/')
+        })
       }
     }
   }
