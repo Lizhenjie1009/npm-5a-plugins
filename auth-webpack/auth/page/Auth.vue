@@ -19,7 +19,7 @@ export default {
         res?.token && sessionStorage.setItem('token', res?.token)
         res.resources && sessionStorage.setItem('menus', JSON.stringify(res.resources))
         let url = ''
-        search.replace(/(\/.*)/g, ($1, s1) => (url = s1))
+        search.includes('%2F') ?  search.replace(/%2F/g, '/').replace(/(\/.*)/g, ($1, s1) => (url = s1)) : search.replace(/(\/.*)/g, ($1, s1) => (url = s1))
         this.$nextTick(() => {
           url ? this.$router.replace(url) : this.$router.replace('/')
         })
