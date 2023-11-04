@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     async init() {
-      const search = location.href.split('?')[1]
+      const search = location.href.replace(/.*\/auth/, '')
       const { data } = await Axios.get('/client/callback?' + search)
       const res = data.data
       if (res) {
