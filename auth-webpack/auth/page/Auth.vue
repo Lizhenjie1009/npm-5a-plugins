@@ -12,7 +12,7 @@ export default {
   methods: {
     async init() {
       const search = location.href.replace(/.*\/auth/, '')
-      const { data } = await Axios.get('/client/callback?' + search)
+      const { data } = await Axios.get('/client/callback' + search)
       const res = data.data
       if (res) {
         sessionStorage.setItem('info', JSON.stringify(res))
